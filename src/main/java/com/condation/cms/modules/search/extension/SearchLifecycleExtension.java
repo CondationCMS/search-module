@@ -49,11 +49,19 @@ public class SearchLifecycleExtension extends ModuleLifeCycleExtension<CMSModule
 	public void init() {
 	}
 
+	private String getLanguage () {
+		String language = (String) getContext().get(SitePropertiesFeature.class).siteProperties().get("language");
+		if (language == null) {
+			language = "standard";
+		}
+		return language;
+	}
+	
 	@Override
 	public void activate() {
 		searchEngine = new SearchEngine();
 		try {
-			searchEngine.open(configuration.getDataDir().toPath().resolve("index"), getContext().get(SitePropertiesFeature.class).siteProperties().getOrDefault("language", "standard"));
+			searchEngine.open(configuration.getDataDir().toPath().resolve("index"), getLanguage());
 
 			// stat reindexing
 			Thread.ofVirtual().start(() -> {

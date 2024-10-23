@@ -318,7 +318,7 @@ public class SearchIndex {
 			} else {
 				topDocs = searcher.search(query, request.size());
 			}
-			result.setTotal(topDocs.totalHits.value);
+			result.setTotal(topDocs.totalHits.value());
 
 			Formatter formatter = new SimpleHTMLFormatter();
 			QueryScorer scorer = new QueryScorer(query);
