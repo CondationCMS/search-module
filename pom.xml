@@ -4,7 +4,7 @@
 	
 	<groupId>com.condation.cms.modules</groupId>
 	<artifactId>search-module</artifactId>
-	<version>2.0.0</version>
+	<version>3.0.0</version>
 	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -12,7 +12,7 @@
 		<module.name>search module</module.name>
 		<module.priority>NORMAL</module.priority>
 		
-		<cms.version>6.0.0-SNAPSHOT</cms.version>
+		<cms.version>7.0.0</cms.version>
 		<lucene.version>9.11.1</lucene.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
