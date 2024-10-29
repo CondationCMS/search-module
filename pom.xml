@@ -12,7 +12,7 @@
 		<module.name>search module</module.name>
 		<module.priority>NORMAL</module.priority>
 		
-		<cms.version>7.1.1</cms.version>
+		<cms.version>7.1.2</cms.version>
 		<lucene.version>10.0.0</lucene.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
