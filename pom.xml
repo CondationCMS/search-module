@@ -14,7 +14,7 @@
 		
 		<cms.version>7.8.0</cms.version>
 		<modules.version>1.0.0</modules.version>
-		<lucene.version>10.1.0</lucene.version>
+		<lucene.version>10.2.0</lucene.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
