@@ -26,8 +26,8 @@ import com.condation.cms.api.eventbus.events.TemplateChangedEvent;
 import com.condation.cms.api.feature.features.DBFeature;
 import com.condation.cms.api.feature.features.EventBusFeature;
 import com.condation.cms.api.feature.features.SitePropertiesFeature;
-import com.condation.cms.api.module.CMSModuleContext;
-import com.condation.cms.api.module.CMSRequestContext;
+import com.condation.cms.api.module.SiteModuleContext;
+import com.condation.cms.api.module.SiteRequestContext;
 import com.condation.cms.modules.search.SearchEngine;
 import com.condation.modules.api.ModuleLifeCycleExtension;
 import com.condation.modules.api.annotation.Extension;
@@ -41,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Extension(ModuleLifeCycleExtension.class)
-public class SearchLifecycleExtension extends ModuleLifeCycleExtension<CMSModuleContext, CMSRequestContext> {
+public class SearchLifecycleExtension extends ModuleLifeCycleExtension<SiteModuleContext, SiteRequestContext> {
 
 	static SearchEngine searchEngine;
 

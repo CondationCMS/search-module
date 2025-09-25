@@ -23,10 +23,11 @@ package com.condation.cms.modules.search.extension;
  */
 import com.condation.cms.api.Constants;
 import com.condation.cms.api.content.ContentResponse;
+import com.condation.cms.api.content.DefaultContentResponse;
 import com.condation.cms.api.feature.features.ContentRenderFeature;
 import com.condation.cms.api.feature.features.DBFeature;
 import com.condation.cms.api.feature.features.SitePropertiesFeature;
-import com.condation.cms.api.module.CMSModuleContext;
+import com.condation.cms.api.module.SiteModuleContext;
 import com.condation.cms.api.utils.HTTPUtil;
 import com.condation.cms.api.utils.PathUtil;
 import com.condation.cms.api.utils.SectionUtil;
@@ -58,7 +59,7 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 
 	private final Path contentBase;
 	private final SearchEngine searchEngine;
-	private final CMSModuleContext moduleContext;
+	private final SiteModuleContext moduleContext;
 
 	@Override
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -78,7 +79,7 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 				return FileVisitResult.CONTINUE;
 			}
 			
-			var uri = PathUtil.toURI(file, contentBase);
+			var uri = PathUtil.toURL(file, contentBase);
 			uri = HTTPUtil.modifyUrl(uri, moduleContext.get(SitePropertiesFeature.class).siteProperties());
 			
 			var content = getContent(file);
@@ -147,12 +148,13 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 		return FileVisitResult.CONTINUE;
 	}
 
-	private Optional<ContentResponse> getContent(Path path) throws IOException {
+	private Optional<DefaultContentResponse> getContent(Path path) throws IOException {
 		var uri = "/" + PathUtil.toRelativeFile(path, contentBase);
 
 		uri = uri.substring(0, uri.lastIndexOf("."));
 		
-		return moduleContext.get(ContentRenderFeature.class).renderContentNode(uri, Collections.emptyMap());
+		var contentResponse = moduleContext.get(ContentRenderFeature.class).renderContentNode(uri, Collections.emptyMap());		
+		return Optional.ofNullable((DefaultContentResponse) contentResponse.get());
 	}
 
 }
