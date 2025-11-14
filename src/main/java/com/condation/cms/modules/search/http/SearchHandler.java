@@ -31,6 +31,8 @@ import com.google.gson.GsonBuilder;
 import java.nio.charset.StandardCharsets;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.jetty.http.HttpHeader;
+import org.eclipse.jetty.http.HttpHeaderValue;
 import org.eclipse.jetty.io.Content;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
@@ -63,6 +65,7 @@ public class SearchHandler implements HttpHandler {
 		SearchRequest searchRequest = new SearchRequest(query, page, size);
 		SearchResult searchResult = searchEngine.search(searchRequest);
 		
+		response.getHeaders().add(HttpHeader.CONTENT_TYPE, HttpHeaderValue.valueOf("application/json"));
 		Content.Sink.write(response, true, GSON.toJson(searchResult), callback);
 		return true;
 	}
