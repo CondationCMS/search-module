@@ -80,7 +80,7 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 			}
 			
 			var uri = PathUtil.toURL(file, contentBase);
-			uri = HTTPUtil.modifyUrl(uri, moduleContext.get(SitePropertiesFeature.class).siteProperties());
+			uri = HTTPUtil.modifyUrl(uri, moduleContext);
 			
 			var content = getContent(file);
 
