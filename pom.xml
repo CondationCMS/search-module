@@ -94,7 +94,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
-			<version>1.18.42</version>
+			<version>1.18.44</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -199,7 +199,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-							<version>1.18.42</version>
+							<version>1.18.44</version>
 						</path>
 						<path>
 							<groupId>com.condation.modules.framework</groupId>
